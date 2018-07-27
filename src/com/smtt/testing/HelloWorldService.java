@@ -17,12 +17,12 @@ public class HelloWorldService {
 	}
 
 	@GET
-	@Path("/getVoterList")
+	@Path("/voterlist/get")
 	public String getVoterList() {
 		
 		Client client = ClientBuilder.newClient();
 		
-		Response response = client.target("http://services.groupkt.com/state/get/IND/all").request().get();
+		Response response = client.target("https:///dkint/api/v1/voterlist").request().get();
 		
 		String entity = response.readEntity(String.class);
 		
@@ -34,7 +34,7 @@ public class HelloWorldService {
 	}
 	
 	@GET
-	@Path("/voterListCallback")
+	@Path("/voterlist/callback/{code}")
 	public String voterListCallback() {
 		
 		System.out.println("The voter List Callback was invoked");
